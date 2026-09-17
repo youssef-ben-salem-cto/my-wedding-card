@@ -34,27 +34,27 @@ const itemVariants = {
  * Percentage positioning keeps them responsive across all screen sizes.
  */
 const flowers = [
-  { top: '8%', left: '5%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '0.1s' },
-  { top: '12%', right: '8%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '0.3s' },
-  { top: '22%', left: '12%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '0.5s' },
-  { top: '18%', right: '15%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '0.7s' },
-  { top: '35%', left: '3%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '0.9s' },
-  { top: '38%', right: '4%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '1.1s' },
-  { top: '55%', left: '8%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '1.3s' },
-  { top: '58%', right: '10%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '1.5s' },
-  { top: '72%', left: '4%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '1.7s' },
-  { top: '75%', right: '6%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '1.9s' },
-  { top: '88%', left: '14%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '2.1s' },
-  { top: '85%', right: '14%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '2.3s' },
+  { top: '8%', left: '5%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.1s' },
+  { top: '12%', right: '8%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.3s' },
+  { top: '22%', left: '12%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '0.5s' },
+  { top: '18%', right: '15%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.7s' },
+  { top: '35%', left: '3%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.9s' },
+  { top: '38%', right: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.1s' },
+  { top: '55%', left: '8%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.3s' },
+  { top: '58%', right: '10%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '1.5s' },
+  { top: '72%', left: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.7s' },
+  { top: '75%', right: '6%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.9s' },
+  { top: '88%', left: '14%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '2.1s' },
+  { top: '85%', right: '14%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '2.3s' },
   // Desktop-only extras
-  { top: '5%', left: '22%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '0.4s', desktop: true },
-  { top: '9%', right: '25%', size: 'w-3 h-3', color: 'text-[#d4af37]', delay: '0.6s', desktop: true },
-  { top: '30%', left: '20%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '1.0s', desktop: true },
-  { top: '33%', right: '22%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '1.2s', desktop: true },
-  { top: '65%', left: '18%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '1.6s', desktop: true },
-  { top: '68%', right: '20%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '1.8s', desktop: true },
-  { top: '90%', left: '28%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '2.2s', desktop: true },
-  { top: '92%', right: '28%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '2.4s', desktop: true },
+  { top: '5%', left: '22%', size: 'w-5 h-5', color: 'text-[#c59a3f]', delay: '0.4s', desktop: true },
+  { top: '9%', right: '25%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '0.6s', desktop: true },
+  { top: '30%', left: '20%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.0s', desktop: true },
+  { top: '33%', right: '22%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.2s', desktop: true },
+  { top: '65%', left: '18%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.6s', desktop: true },
+  { top: '68%', right: '20%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.8s', desktop: true },
+  { top: '90%', left: '28%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '2.2s', desktop: true },
+  { top: '92%', right: '28%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '2.4s', desktop: true },
 ];
 
 export function IntroView({ onOpen }: IntroViewProps) {
@@ -100,9 +100,12 @@ export function IntroView({ onOpen }: IntroViewProps) {
             <motion.div
               key={index}
               className={`absolute ${flower.size} ${flower.color} ${flower.desktop ? 'hidden md:block' : ''}`}
-              style={positionStyle}
+              style={{
+                ...positionStyle,
+                filter: 'drop-shadow(0 0 4px rgba(212,175,55,0.35))',
+              }}
               initial={{ opacity: 0, scale: 0.5, y: 10 }}
-              animate={{ opacity: 0.22, scale: 1, y: 0 }}
+              animate={{ opacity: 0.5, scale: 1, y: 0 }}
               transition={{ delay: parseFloat(flower.delay), duration: 0.8, ease: LUXURY_EASE }}
             >
               <SmallFlower className="w-full h-full" />

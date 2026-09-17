@@ -172,7 +172,7 @@ export function QuranVerseBadge({ text, surah }: { text: string; surah: string }
 
 /**
  * Tiny decorative flower for background ambience.
- * Extremely low opacity so it never competes with text.
+ * Opacity is controlled by the parent motion wrapper.
  */
 export function SmallFlower({
   className = '',
@@ -192,24 +192,20 @@ export function SmallFlower({
       <path
         d="M12 4C12 4 10.5 7 10.5 9.5C10.5 12 12 15 12 15C12 15 13.5 12 13.5 9.5C13.5 7 12 4 12 4Z"
         fill="currentColor"
-        opacity="0.5"
       />
       <path
         d="M20 12C20 12 17 10.5 14.5 10.5C12 10.5 9 12 9 12C9 12 12 13.5 14.5 13.5C17 13.5 20 12 20 12Z"
         fill="currentColor"
-        opacity="0.5"
       />
       <path
         d="M12 20C12 20 13.5 17 13.5 14.5C13.5 12 12 9 12 9C12 9 10.5 12 10.5 14.5C10.5 17 12 20 12 20Z"
         fill="currentColor"
-        opacity="0.5"
       />
       <path
         d="M4 12C4 12 7 13.5 9.5 13.5C12 13.5 15 12 15 12C15 12 12 10.5 9.5 10.5C7 10.5 4 12 4 12Z"
         fill="currentColor"
-        opacity="0.5"
       />
-      <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.7" />
+      <circle cx="12" cy="12" r="2.5" fill="currentColor" />
     </svg>
   );
 }
