@@ -34,27 +34,27 @@ const itemVariants = {
  * Percentage positioning keeps them responsive across all screen sizes.
  */
 const flowers = [
-  { top: '8%', left: '5%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.1s' },
-  { top: '12%', right: '8%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.3s' },
-  { top: '22%', left: '12%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '0.5s' },
-  { top: '18%', right: '15%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.7s' },
-  { top: '35%', left: '3%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.9s' },
-  { top: '38%', right: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.1s' },
-  { top: '55%', left: '8%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.3s' },
-  { top: '58%', right: '10%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '1.5s' },
-  { top: '72%', left: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.7s' },
-  { top: '75%', right: '6%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.9s' },
-  { top: '88%', left: '14%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '2.1s' },
-  { top: '85%', right: '14%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '2.3s' },
+  { top: '8%', left: '5%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.1s', peakOpacity: 0.55, pulseDuration: 3.2 },
+  { top: '12%', right: '8%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.3s', peakOpacity: 0.42, pulseDuration: 4.1 },
+  { top: '22%', left: '12%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '0.5s', peakOpacity: 0.48, pulseDuration: 2.9 },
+  { top: '18%', right: '15%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '0.7s', peakOpacity: 0.5, pulseDuration: 5.3 },
+  { top: '35%', left: '3%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '0.9s', peakOpacity: 0.38, pulseDuration: 3.7 },
+  { top: '38%', right: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.1s', peakOpacity: 0.45, pulseDuration: 4.6 },
+  { top: '55%', left: '8%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.3s', peakOpacity: 0.52, pulseDuration: 2.7 },
+  { top: '58%', right: '10%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '1.5s', peakOpacity: 0.4, pulseDuration: 3.9 },
+  { top: '72%', left: '4%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '1.7s', peakOpacity: 0.46, pulseDuration: 4.4 },
+  { top: '75%', right: '6%', size: 'w-6 h-6 sm:w-7 sm:h-7', color: 'text-[#d4af37]', delay: '1.9s', peakOpacity: 0.58, pulseDuration: 3.1 },
+  { top: '88%', left: '14%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#c59a3f]', delay: '2.1s', peakOpacity: 0.44, pulseDuration: 5.0 },
+  { top: '85%', right: '14%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#d4af37]', delay: '2.3s', peakOpacity: 0.5, pulseDuration: 3.5 },
   // Desktop-only extras
-  { top: '5%', left: '22%', size: 'w-5 h-5', color: 'text-[#c59a3f]', delay: '0.4s', desktop: true },
-  { top: '9%', right: '25%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '0.6s', desktop: true },
-  { top: '30%', left: '20%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.0s', desktop: true },
-  { top: '33%', right: '22%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.2s', desktop: true },
-  { top: '65%', left: '18%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.6s', desktop: true },
-  { top: '68%', right: '20%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.8s', desktop: true },
-  { top: '90%', left: '28%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '2.2s', desktop: true },
-  { top: '92%', right: '28%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '2.4s', desktop: true },
+  { top: '5%', left: '22%', size: 'w-5 h-5', color: 'text-[#c59a3f]', delay: '0.4s', peakOpacity: 0.36, pulseDuration: 4.2, desktop: true },
+  { top: '9%', right: '25%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '0.6s', peakOpacity: 0.4, pulseDuration: 3.3, desktop: true },
+  { top: '30%', left: '20%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.0s', peakOpacity: 0.48, pulseDuration: 4.8, desktop: true },
+  { top: '33%', right: '22%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.2s', peakOpacity: 0.34, pulseDuration: 2.8, desktop: true },
+  { top: '65%', left: '18%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '1.6s', peakOpacity: 0.42, pulseDuration: 3.6, desktop: true },
+  { top: '68%', right: '20%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '1.8s', peakOpacity: 0.38, pulseDuration: 4.5, desktop: true },
+  { top: '90%', left: '28%', size: 'w-5 h-5', color: 'text-[#d4af37]', delay: '2.2s', peakOpacity: 0.46, pulseDuration: 3.0, desktop: true },
+  { top: '92%', right: '28%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '2.4s', peakOpacity: 0.32, pulseDuration: 5.2, desktop: true },
 ];
 
 export function IntroView({ onOpen }: IntroViewProps) {
@@ -105,10 +105,23 @@ export function IntroView({ onOpen }: IntroViewProps) {
                 filter: 'drop-shadow(0 0 4px rgba(212,175,55,0.35))',
               }}
               initial={{ opacity: 0, scale: 0.5, y: 10 }}
-              animate={{ opacity: 0.5, scale: 1, y: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: parseFloat(flower.delay), duration: 0.8, ease: LUXURY_EASE }}
             >
-              <SmallFlower className="w-full h-full" />
+              <motion.div
+                className="w-full h-full"
+                initial={{ opacity: flower.peakOpacity * 0.25 }}
+                animate={{ opacity: [flower.peakOpacity * 0.25, flower.peakOpacity] }}
+                transition={{
+                  delay: parseFloat(flower.delay) + 0.6,
+                  duration: flower.pulseDuration,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                  ease: 'easeInOut',
+                }}
+              >
+                <SmallFlower className="w-full h-full" />
+              </motion.div>
             </motion.div>
           );
         })}
