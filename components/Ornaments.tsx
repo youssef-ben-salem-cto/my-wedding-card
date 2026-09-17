@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 
 /**
  * Royal gold ornamental borders, corner cartouches and dividers
@@ -27,6 +28,80 @@ export function GoldenCorner({ className = '' }: { className?: string }) {
         strokeWidth="1.5"
         strokeDasharray="2 2"
         opacity="0.6"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Same corner shape as GoldenCorner, but the outline draws itself on load
+ * and the filled shape fades in right after. Keeps the original form intact.
+ */
+export function AnimatedGoldenCorner({
+  className = '',
+  delay = 0,
+}: {
+  className?: string;
+  delay?: number;
+}) {
+  const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
+  const drawVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: { duration: 1.4, ease, delay },
+    },
+  };
+
+  const fillTransition = {
+    duration: 0.5,
+    ease,
+    delay: delay + 1.1,
+  };
+
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`w-14 h-14 md:w-20 md:h-20 text-[#c59a3f] pointer-events-none ${className}`}
+    >
+      {/* Filled original shape fades in after stroke draws */}
+      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={fillTransition}>
+        <path
+          d="M2 2H38C48 2 56 10 56 20C56 30 64 38 74 38H98V42H74C61.8 42 52 32.2 52 20C52 12.3 45.7 6 38 6H6V38C6 45.7 12.3 52 20 52C32.2 52 42 61.8 42 74V98H38V74C38 64 30 56 20 56C10 56 2 48 2 38V2Z"
+          fill="currentColor"
+          opacity="0.85"
+        />
+        <circle cx="14" cy="14" r="4" fill="currentColor" />
+        <circle cx="82" cy="14" r="2.5" fill="currentColor" opacity="0.7" />
+        <circle cx="14" cy="82" r="2.5" fill="currentColor" opacity="0.7" />
+      </motion.g>
+
+      {/* Stroke outline draws on load */}
+      <motion.path
+        d="M2 2H38C48 2 56 10 56 20C56 30 64 38 74 38H98V42H74C61.8 42 52 32.2 52 20C52 12.3 45.7 6 38 6H6V38C6 45.7 12.3 52 20 52C32.2 52 42 61.8 42 74V98H38V74C38 64 30 56 20 56C10 56 2 48 2 38V2Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        variants={drawVariants}
+        initial="hidden"
+        animate="visible"
+      />
+
+      {/* Decorative dashed curve fades in last */}
+      <motion.path
+        d="M20 2C20 18 32 30 48 30"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeDasharray="2 2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ ...fillTransition, delay: delay + 1.4 }}
       />
     </svg>
   );
@@ -92,5 +167,49 @@ export function QuranVerseBadge({ text, surah }: { text: string; surah: string }
         {surah}
       </div>
     </div>
+  );
+}
+
+/**
+ * Tiny decorative flower for background ambience.
+ * Extremely low opacity so it never competes with text.
+ */
+export function SmallFlower({
+  className = '',
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`pointer-events-none ${className}`}
+      style={style}
+    >
+      <path
+        d="M12 4C12 4 10.5 7 10.5 9.5C10.5 12 12 15 12 15C12 15 13.5 12 13.5 9.5C13.5 7 12 4 12 4Z"
+        fill="currentColor"
+        opacity="0.5"
+      />
+      <path
+        d="M20 12C20 12 17 10.5 14.5 10.5C12 10.5 9 12 9 12C9 12 12 13.5 14.5 13.5C17 13.5 20 12 20 12Z"
+        fill="currentColor"
+        opacity="0.5"
+      />
+      <path
+        d="M12 20C12 20 13.5 17 13.5 14.5C13.5 12 12 9 12 9C12 9 10.5 12 10.5 14.5C10.5 17 12 20 12 20Z"
+        fill="currentColor"
+        opacity="0.5"
+      />
+      <path
+        d="M4 12C4 12 7 13.5 9.5 13.5C12 13.5 15 12 15 12C15 12 12 10.5 9.5 10.5C7 10.5 4 12 4 12Z"
+        fill="currentColor"
+        opacity="0.5"
+      />
+      <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.7" />
+    </svg>
   );
 }

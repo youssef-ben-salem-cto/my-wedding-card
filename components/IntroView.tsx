@@ -4,11 +4,58 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Sparkles, MailOpen, Heart } from 'lucide-react';
-import { GoldenCorner, LuxuryDivider } from './Ornaments';
+import { AnimatedGoldenCorner, LuxuryDivider, SmallFlower } from './Ornaments';
 
 interface IntroViewProps {
   onOpen: () => void;
 }
+
+const LUXURY_EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: LUXURY_EASE },
+  },
+};
+
+/**
+ * Small background flowers: mobile (12) + desktop extras (8).
+ * Percentage positioning keeps them responsive across all screen sizes.
+ */
+const flowers = [
+  { top: '8%', left: '5%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '0.1s' },
+  { top: '12%', right: '8%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '0.3s' },
+  { top: '22%', left: '12%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '0.5s' },
+  { top: '18%', right: '15%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '0.7s' },
+  { top: '35%', left: '3%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '0.9s' },
+  { top: '38%', right: '4%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '1.1s' },
+  { top: '55%', left: '8%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '1.3s' },
+  { top: '58%', right: '10%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '1.5s' },
+  { top: '72%', left: '4%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '1.7s' },
+  { top: '75%', right: '6%', size: 'w-5 h-5 sm:w-6 sm:h-6', color: 'text-[#d4af37]', delay: '1.9s' },
+  { top: '88%', left: '14%', size: 'w-4 h-4 sm:w-5 sm:h-5', color: 'text-[#c59a3f]', delay: '2.1s' },
+  { top: '85%', right: '14%', size: 'w-3 h-3 sm:w-4 sm:h-4', color: 'text-[#d4af37]', delay: '2.3s' },
+  // Desktop-only extras
+  { top: '5%', left: '22%', size: 'w-4 h-4', color: 'text-[#c59a3f]', delay: '0.4s', desktop: true },
+  { top: '9%', right: '25%', size: 'w-3 h-3', color: 'text-[#d4af37]', delay: '0.6s', desktop: true },
+  { top: '30%', left: '20%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '1.0s', desktop: true },
+  { top: '33%', right: '22%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '1.2s', desktop: true },
+  { top: '65%', left: '18%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '1.6s', desktop: true },
+  { top: '68%', right: '20%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '1.8s', desktop: true },
+  { top: '90%', left: '28%', size: 'w-4 h-4', color: 'text-[#d4af37]', delay: '2.2s', desktop: true },
+  { top: '92%', right: '28%', size: 'w-3 h-3', color: 'text-[#c59a3f]', delay: '2.4s', desktop: true },
+];
 
 export function IntroView({ onOpen }: IntroViewProps) {
   const [isOpening, setIsOpening] = useState(false);
@@ -17,7 +64,6 @@ export function IntroView({ onOpen }: IntroViewProps) {
     if (isOpening) return;
     setIsOpening(true);
 
-    // Celebratory gold & sky-blue sparkles burst
     try {
       confetti({
         particleCount: 65,
@@ -30,10 +76,7 @@ export function IntroView({ onOpen }: IntroViewProps) {
       // safe ignore
     }
 
-    // Allow the opening animation to play out elegantly, then transition to details
-    setTimeout(() => {
-      onOpen();
-    }, 850);
+    setTimeout(() => onOpen(), 850);
   };
 
   return (
@@ -41,72 +84,103 @@ export function IntroView({ onOpen }: IntroViewProps) {
       initial={false}
       animate={
         isOpening
-          ? {
-              scale: 1.04,
-              opacity: 0,
-              filter: 'blur(6px)',
-              transition: { duration: 0.85, ease: [0.32, 0, 0.67, 0] },
-            }
-          : {
-              scale: 1,
-              opacity: 1,
-              filter: 'blur(0px)',
-              transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            }
+          ? { scale: 1.04, opacity: 0, filter: 'blur(6px)', transition: { duration: 0.85, ease: [0.32, 0, 0.67, 0] } }
+          : { scale: 1, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
       }
       className="relative min-h-[92vh] flex items-center justify-center p-4 sm:p-6"
     >
+      {/* Background flowers */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {flowers.map((flower, index) => {
+          const positionStyle: React.CSSProperties = {
+            top: flower.top,
+            ...(flower.left ? { left: flower.left } : { right: flower.right }),
+          };
+          return (
+            <motion.div
+              key={index}
+              className={`absolute ${flower.size} ${flower.color} ${flower.desktop ? 'hidden md:block' : ''}`}
+              style={positionStyle}
+              initial={{ opacity: 0, scale: 0.5, y: 10 }}
+              animate={{ opacity: 0.22, scale: 1, y: 0 }}
+              transition={{ delay: parseFloat(flower.delay), duration: 0.8, ease: LUXURY_EASE }}
+            >
+              <SmallFlower className="w-full h-full" />
+            </motion.div>
+          );
+        })}
+      </div>
+
       {/* Luxury Royal Envelope Card Container */}
       <div className="relative w-full max-w-xl mx-auto">
         {/* Soft Background Radial Light */}
         <div className="absolute -inset-2 bg-gradient-to-r from-[#d4af37]/20 via-[#93c5fd]/25 to-[#d4af37]/20 rounded-[2.5rem] blur-xl opacity-70 pointer-events-none" />
 
-        <div className="relative bg-gradient-to-b from-[#ffffff]/98 via-[#f5f9fd]/95 to-[#ebf4fb]/98 border-2 border-[#d4af37]/45 rounded-3xl p-6 sm:p-12 shadow-[0_20px_50px_rgba(15,39,66,0.12)] text-center overflow-hidden backdrop-blur-md">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative bg-gradient-to-b from-[#ffffff]/98 via-[#f5f9fd]/95 to-[#ebf4fb]/98 border-2 border-[#d4af37]/45 rounded-3xl p-6 sm:p-12 shadow-[0_20px_50px_rgba(15,39,66,0.12)] text-center overflow-hidden backdrop-blur-md"
+        >
           {/* Inner Golden Hairline Frame */}
           <div className="absolute inset-3 border border-[#d4af37]/30 rounded-[1.25rem] pointer-events-none" />
 
-          {/* Corner Flourishes */}
+          {/* Animated Corner Flourishes — exact same shape, drawn on load */}
           <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
-            <GoldenCorner className="scale-x-[-1]" />
+            <AnimatedGoldenCorner className="scale-x-[-1]" delay={0.2} />
           </div>
           <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-            <GoldenCorner />
+            <AnimatedGoldenCorner delay={0.35} />
           </div>
           <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3">
-            <GoldenCorner className="scale-x-[-1] scale-y-[-1]" />
+            <AnimatedGoldenCorner className="scale-x-[-1] scale-y-[-1]" delay={0.5} />
           </div>
           <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3">
-            <GoldenCorner className="scale-y-[-1]" />
+            <AnimatedGoldenCorner className="scale-y-[-1]" delay={0.65} />
           </div>
 
-          {/* Royal Wedding Emblem (No monogram letters) */}
-          <div className="flex justify-center mb-4">
+          {/* Royal Wedding Emblem */}
+          <motion.div variants={itemVariants} className="flex justify-center mb-4">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#fdf9ee] via-white to-[#eef6fc] border-2 border-[#d4af37] shadow-[0_6px_20px_rgba(212,175,55,0.22)]">
-              <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-[#c59a3f] fill-[#c59a3f]/15" />
+              <motion.div
+                className="inline-flex"
+                animate={{ scale: [1, 1.14, 1] }}
+                transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+              >
+                <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-[#c59a3f] fill-[#c59a3f]/15" />
+              </motion.div>
               {/* Surrounding Gold Ring */}
               <div className="absolute -inset-1.5 rounded-full border border-dashed border-[#c59a3f]/40 animate-[spin_40s_linear_infinite]" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Basmala */}
-          <div className="text-xs sm:text-sm font-semibold tracking-widest text-[#8c6b24] mb-2 font-['Cairo']">
+          <motion.div
+            variants={itemVariants}
+            className="text-xs sm:text-sm font-semibold tracking-widest text-[#8c6b24] mb-2 font-['Cairo']"
+          >
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </div>
+          </motion.div>
 
           {/* Quranic Verse */}
-          <div className="my-4 px-3 sm:px-6 py-4 rounded-2xl bg-[#eaf3fa]/70 border border-[#c59a3f]/25 shadow-inner">
+          <motion.div
+            variants={itemVariants}
+            className="my-4 px-3 sm:px-6 py-4 rounded-2xl bg-[#eaf3fa]/70 border border-[#c59a3f]/25 shadow-inner"
+          >
             <p className="font-['Amiri',serif] text-base sm:text-lg md:text-xl text-[#0f2742] leading-relaxed">
               ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾
             </p>
             <span className="block mt-2 text-xs font-semibold text-[#8c6b24]">
               [سورة الروم: 21]
             </span>
-          </div>
+          </motion.div>
 
-          <LuxuryDivider />
+          <motion.div variants={itemVariants}>
+            <LuxuryDivider />
+          </motion.div>
 
           {/* Bride & Groom Full Names */}
-          <div className="space-y-2 mb-6">
+          <motion.div variants={itemVariants} className="space-y-2 mb-6">
             <span className="inline-block text-xs sm:text-sm font-semibold text-[#2c4c68] uppercase tracking-wider font-['Cairo']">
               دعوة زفاف وعقد قران
             </span>
@@ -116,10 +190,10 @@ export function IntroView({ onOpen }: IntroViewProps) {
             <p className="text-xs sm:text-sm text-[#486581] font-['Cairo'] pt-1">
               الأحد 11 أكتوبر 2026 • تونس العاصمة
             </p>
-          </div>
+          </motion.div>
 
-          {/* Main Invitation Opening Button (Starts animation and music on click) */}
-          <div className="pt-2">
+          {/* Main Invitation Opening Button */}
+          <motion.div variants={itemVariants} className="pt-2">
             <button
               id="open-invitation-btn"
               onClick={handleOpenInvitation}
@@ -137,8 +211,8 @@ export function IntroView({ onOpen }: IntroViewProps) {
               </span>
               <Sparkles className="w-5 h-5 text-yellow-100 transition-transform group-hover:rotate-12" />
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </motion.div>
   );

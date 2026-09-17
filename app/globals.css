@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+/* --------------------------------------------------------------------------
+   Global styles and animation helpers
+   -------------------------------------------------------------------------- */
+
+/* Note: hero animations (heart pulse, flowers, corner draw, text stagger)
+   are driven by Framer Motion in the components for reliability. */
